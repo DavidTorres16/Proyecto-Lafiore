@@ -7,13 +7,15 @@ Propuesta de landing informativa y promocional para **Lafiore Medical Skin Cente
 
 ## Correr el proyecto
 
+Requiere Node.js 22.12 o superior (`.nvmrc` incluido).
+
 ```bash
 npm install
 npm run dev      # http://localhost:4321
 npm run build    # genera dist/
 ```
 
-Stack: Astro + Tailwind v4, fuentes autoalojadas (Cormorant Garamond y Geist) e iconos Phosphor.
+Stack: Astro 6 + Tailwind v4, fuentes autoalojadas (Cormorant Garamond y Geist) e iconos Phosphor.
 
 ## Estructura de la landing
 
