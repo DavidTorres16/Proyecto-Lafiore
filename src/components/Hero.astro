@@ -1,0 +1,51 @@
+---
+import Icon from './Icon.astro';
+import { site, wa, bookingText } from '../data/site';
+---
+
+<section id="hero" class="relative overflow-hidden">
+  <div
+    class="mx-auto grid max-w-7xl items-center gap-12 px-4 pt-10 pb-16 md:grid-cols-[1.05fr_0.95fr] md:gap-10 md:px-8 md:pt-16 md:pb-20 lg:min-h-[calc(100dvh-68px)] lg:pt-12"
+  >
+    <div class="max-w-2xl">
+      <p data-reveal class="text-[13px] font-medium tracking-[0.2em] text-accent uppercase">
+        Medical Skin Center en {site.city.split(',')[0]}
+      </p>
+      <h1
+        data-reveal
+        style="--i:1"
+        class="mt-5 font-display text-[44px] leading-[1.06] font-medium tracking-[-0.01em] sm:text-[56px] lg:text-[64px]"
+      >
+        Rejuvenecimiento facial <span class="lg:block">con <em class="pb-1 font-normal text-accent">respaldo médico</em></span>
+      </h1>
+      <p data-reveal style="--i:2" class="mt-6 max-w-[44ch] text-lg leading-relaxed text-ink-soft">
+        Calidad de piel, cuerpo y recuperación post operatoria, de la mano del {site.surgeon}, cirujano plástico
+        facial.
+      </p>
+      <div data-reveal style="--i:3" class="mt-9 flex flex-wrap gap-3">
+        <a href={wa(bookingText)} target="_blank" rel="noopener" class="btn-primary">
+          <Icon name="whatsapp-logo" size={20} />
+          Agenda tu cita
+        </a>
+        <a href="#tratamientos" class="btn-ghost">
+          Ver tratamientos
+          <Icon name="arrow-right" size={18} />
+        </a>
+      </div>
+    </div>
+
+    <div data-reveal style="--i:2" class="relative mx-auto w-full max-w-[460px] md:mr-0">
+      <div aria-hidden="true" class="arch absolute inset-0 -z-10 translate-x-4 translate-y-4 bg-surface-strong md:translate-x-6 md:translate-y-6"></div>
+      <div class="arch aspect-[4/5] overflow-hidden bg-surface">
+        <img
+          src="/img/perfil-cejas-remocion.webp"
+          alt="Rostro de paciente durante un tratamiento de cejas en Lafiore"
+          width="774"
+          height="660"
+          fetchpriority="high"
+          class="size-full object-cover object-[30%_center]"
+        />
+      </div>
+    </div>
+  </div>
+</section>

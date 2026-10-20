@@ -1,0 +1,51 @@
+---
+import Icon from './Icon.astro';
+import { wa } from '../data/site';
+---
+
+<!-- Promoción destacada: copy tomado de su publicación "recuperar tus cejas" -->
+<section aria-labelledby="spotlight-title" class="overflow-hidden py-20 md:py-32">
+  <div class="mx-auto max-w-7xl px-4 md:px-8">
+    <div class="relative grid gap-10 md:grid-cols-12 md:items-end">
+      <h2
+        id="spotlight-title"
+        data-reveal
+        class="relative z-10 font-display text-[52px] leading-[0.98] font-medium tracking-[-0.015em] md:col-span-8 md:col-start-1 md:row-start-1 md:text-[104px]"
+      >
+        Recupera tus cejas <em class="block pb-2 font-normal text-accent">antes de pensar en dibujarlas</em>
+      </h2>
+
+      <figure
+        data-reveal
+        style="--i:1"
+        class="relative overflow-hidden rounded-3xl bg-surface md:col-span-5 md:col-start-8 md:row-span-2 md:row-start-1 md:-mt-6"
+      >
+        <img
+          src="/img/producto-skinlab.webp"
+          alt="Sérum Skinlab Eyebrow Booster junto a una flor de astromelia"
+          width="774"
+          height="642"
+          loading="lazy"
+          data-drift
+          class="aspect-[4/5] w-full object-cover"
+        />
+      </figure>
+
+      <div data-reveal style="--i:2" class="max-w-md md:col-span-5 md:row-start-2">
+        <p class="text-lg leading-relaxed text-ink-soft">
+          Tratamiento de recuperación de cejas con Skinlab Eyebrow Booster y remoción de maquillaje permanente, para
+          volver a una mirada natural.
+        </p>
+        <a
+          href={wa('Hola Lafiore, quiero información sobre el tratamiento de recuperación de cejas.')}
+          target="_blank"
+          rel="noopener"
+          class="mt-8 inline-flex items-center gap-2 text-[15px] font-medium text-accent underline-offset-4 hover:underline"
+        >
+          Consultar
+          <Icon name="arrow-up-right" size={18} />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

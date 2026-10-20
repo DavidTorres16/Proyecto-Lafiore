@@ -1,0 +1,30 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+
+<!-- Testimonio real publicado en historias (@dramarialejandraquiceno, marzo 2023). Pedir autorización antes de publicar. -->
+<section aria-label="Testimonio" class="bg-surface py-20 md:py-28">
+  <figure class="mx-auto max-w-4xl px-4 text-center md:px-8">
+    <span data-reveal class="inline-block text-bloom"><Icon name="quotes" size={44} /></span>
+    <blockquote data-reveal style="--i:1" class="mt-6 font-display text-3xl leading-[1.25] font-normal text-balance md:text-[44px]">
+      “Hoy iniciamos nuestra mañana en este lugar tan hermoso. Me estoy haciendo depilación láser y los resultados no se
+      imaginan, estoy feliz.”
+    </blockquote>
+    <figcaption data-reveal style="--i:2" class="mt-8 text-[15px] text-ink-soft">
+      <span class="font-medium text-ink">Dra. María Alejandra Quiceno</span>
+      <span class="block sm:inline"><span class="hidden sm:inline"> - </span>paciente de depilación láser diodo</span>
+    </figcaption>
+    <a
+      data-reveal
+      style="--i:3"
+      href={site.instagram}
+      target="_blank"
+      rel="noopener"
+      class="btn-ghost mt-10"
+    >
+      <Icon name="instagram-logo" size={18} />
+      Ver resultados en Instagram
+    </a>
+  </figure>
+</section>

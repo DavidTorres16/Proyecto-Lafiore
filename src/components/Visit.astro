@@ -1,0 +1,38 @@
+---
+import Icon from './Icon.astro';
+import { wa } from '../data/site';
+---
+
+<!-- Promoción para turistas: copy de su campaña de historias de enero 2025. -->
+<section id="visitanos" class="relative isolate scroll-mt-20 overflow-hidden">
+  <img
+    src="/img/espacio.webp"
+    alt="Sala de Lafiore con iluminación cálida, plantas y techo de madera"
+    width="696"
+    height="522"
+    loading="lazy"
+    class="absolute inset-0 -z-20 size-full scale-110 object-cover object-top blur-[3px]"
+  />
+  <div aria-hidden="true" class="absolute inset-0 -z-10 bg-gradient-to-r from-[#2b1b27]/95 via-[#2b1b27]/75 to-[#2b1b27]/40"></div>
+
+  <div class="mx-auto flex min-h-[560px] max-w-7xl flex-col justify-center px-4 py-20 text-[#f5ecee] md:min-h-[640px] md:px-8">
+    <p data-reveal class="text-[13px] font-medium tracking-[0.2em] text-[#e6c3cf] uppercase">Plan de visita</p>
+    <h2 data-reveal style="--i:1" class="mt-5 max-w-2xl font-display text-[44px] leading-[1.04] font-medium text-balance md:text-[68px]">
+      ¿De visita en el Quindío?
+    </h2>
+    <p data-reveal style="--i:2" class="mt-5 max-w-[42ch] text-lg leading-relaxed text-[#f5ecee]/85">
+      Haz que tu viaje sea más especial. Lleva de regreso a casa una piel luminosa y renovada.
+    </p>
+    <a
+      data-reveal
+      style="--i:3"
+      href={wa('Hola Lafiore, voy a estar de visita en el Quindío y quiero agendar un tratamiento.')}
+      target="_blank"
+      rel="noopener"
+      class="btn mt-9 w-fit bg-[#f5ecee] text-[#2b1b27] hover:-translate-y-px"
+    >
+      Planear mi visita
+      <Icon name="airplane-tilt" size={18} />
+    </a>
+  </div>
+</section>
