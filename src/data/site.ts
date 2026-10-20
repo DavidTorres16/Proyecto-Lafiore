@@ -9,6 +9,9 @@ export const site = {
   surgeonInstagram: 'https://www.instagram.com/drjavierflorez/',
 };
 
+// Antepone la ruta base (necesaria en GitHub Pages) a archivos de public/.
+export const asset = (path: string) => `${import.meta.env.BASE_URL.replace(/\/$/, '')}${path}`;
+
 export const wa = (text: string) =>
   `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(text)}`;
 
@@ -44,7 +47,7 @@ export const treatmentLines: TreatmentLine[] = [
       'Remoción de maquillaje permanente',
       'Depilación láser diodo',
     ],
-    image: { src: '/img/mascarilla-facial.webp', alt: 'Paciente con mascarilla facial y diadema bordada con el monograma de Lafiore' },
+    image: { src: asset('/img/mascarilla-facial.webp'), alt: 'Paciente con mascarilla facial y diadema bordada con el monograma de Lafiore' },
     icon: 'sparkle',
   },
   {
@@ -52,7 +55,7 @@ export const treatmentLines: TreatmentLine[] = [
     title: 'Cuerpo',
     summary: 'Tecnología para flacidez, celulitis y grasa localizada, sin dolor.',
     items: ['Radiofrecuencia Venus', 'Presoterapia', 'Tratamiento de celulitis', 'Masaje de relajación'],
-    image: { src: '/img/radiofrecuencia-corporal.webp', alt: 'Esteticista de Lafiore aplicando radiofrecuencia Venus en tratamiento corporal' },
+    image: { src: asset('/img/radiofrecuencia-corporal.webp'), alt: 'Esteticista de Lafiore aplicando radiofrecuencia Venus en tratamiento corporal' },
     icon: 'drop',
   },
   {

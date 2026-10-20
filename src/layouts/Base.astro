@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { site } from '../data/site';
+import { site, asset } from '../data/site';
 
 interface Props {
   title: string;
@@ -35,9 +35,9 @@ const schema = {
     <meta property="og:locale" content="es_CO" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/img/perfil-cejas-remocion.webp" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" as="image" href="/img/perfil-cejas-remocion.webp" fetchpriority="high" />
+    <meta property="og:image" content={asset('/img/perfil-cejas-remocion.webp')} />
+    <link rel="icon" href={asset('/favicon.svg')} type="image/svg+xml" />
+    <link rel="preload" as="image" href={asset('/img/perfil-cejas-remocion.webp')} fetchpriority="high" />
     <script is:inline>document.documentElement.classList.add('js');</script>
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>

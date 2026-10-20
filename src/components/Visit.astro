@@ -1,12 +1,12 @@
 ---
 import Icon from './Icon.astro';
-import { wa } from '../data/site';
+import { wa, asset } from '../data/site';
 ---
 
 <!-- Promoción para turistas: copy de su campaña de historias de enero 2025. -->
 <section id="visitanos" class="relative isolate scroll-mt-20 overflow-hidden">
   <img
-    src="/img/espacio.webp"
+    src={asset('/img/espacio.webp')}
     alt="Sala de Lafiore con iluminación cálida, plantas y techo de madera"
     width="696"
     height="522"
