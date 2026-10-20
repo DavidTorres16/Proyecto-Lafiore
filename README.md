@@ -17,6 +17,16 @@ npm run build    # genera dist/
 
 Stack: Astro 6 + Tailwind v4, fuentes autoalojadas (Cormorant Garamond y Geist) e iconos Phosphor.
 
+## Despliegue en GitHub Pages
+
+El workflow `.github/workflows/deploy.yml` compila el sitio y lo publica en GitHub Pages cada vez que hay un push a `main`. También se puede lanzar a mano desde la pestaña **Actions**.
+
+URL: https://davidtorres16.github.io/Proyecto-Lafiore/
+
+Configuración única en GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+El workflow define `SITE_URL` y `BASE_PATH` para que las rutas funcionen bajo `/Proyecto-Lafiore/`. En local no hace falta definirlos.
+
 ## Estructura de la landing
 
 1. Hero con CTA a WhatsApp

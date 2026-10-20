@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { postOpPillars, wa } from '../data/site';
+import { postOpPillars, wa, asset } from '../data/site';
 ---
 
 <section id="post-operatorio" class="scroll-mt-20 bg-block text-block-ink">
@@ -29,7 +29,7 @@ import { postOpPillars, wa } from '../data/site';
     <div class="grid gap-5">
       <figure data-reveal class="overflow-hidden rounded-3xl">
         <img
-          src="/img/presoterapia.webp"
+          src={asset('/img/presoterapia.webp')}
           alt="Esteticista de Lafiore preparando una sesión de presoterapia en cabina"
           width="680"
           height="700"

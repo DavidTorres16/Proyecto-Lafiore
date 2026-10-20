@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { site, wa, bookingText } from '../data/site';
+import { site, wa, bookingText, asset } from '../data/site';
 ---
 
 <section id="hero" class="relative overflow-hidden">
@@ -38,7 +38,7 @@ import { site, wa, bookingText } from '../data/site';
       <div aria-hidden="true" class="arch absolute inset-0 -z-10 translate-x-4 translate-y-4 bg-surface-strong md:translate-x-6 md:translate-y-6"></div>
       <div class="arch aspect-[4/5] overflow-hidden bg-surface">
         <img
-          src="/img/perfil-cejas-remocion.webp"
+          src={asset('/img/perfil-cejas-remocion.webp')}
           alt="Rostro de paciente durante un tratamiento de cejas en Lafiore"
           width="774"
           height="660"
