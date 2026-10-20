@@ -39,6 +39,8 @@ El workflow define `SITE_URL` y `BASE_PATH` para que las rutas funcionen bajo `/
 8. Nosotras
 9. Cierre con CTA y footer
 
+La página carga siempre en modo claro. El botón de luna/sol del header cambia a modo oscuro y el navegador recuerda la elección.
+
 Los botones abren WhatsApp con un mensaje prellenado según el tratamiento. Los datos del negocio están en `src/data/site.ts`.
 
 ## Antes de mostrarla o publicarla

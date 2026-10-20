@@ -28,6 +28,16 @@ import { nav, wa, bookingText } from '../data/site';
     </nav>
 
     <div class="flex items-center gap-2">
+      <button
+        type="button"
+        class="grid size-11 place-items-center rounded-full text-ink-soft transition-colors hover:bg-surface hover:text-ink"
+        aria-label="Activar modo oscuro"
+        aria-pressed="false"
+        data-theme-toggle
+      >
+        <span class="dark:hidden"><Icon name="moon" size={22} /></span>
+        <span class="hidden dark:inline"><Icon name="sun" size={22} /></span>
+      </button>
       <a href={wa(bookingText)} target="_blank" rel="noopener" class="btn-primary hidden !px-5 !py-2.5 sm:inline-flex">
         <Icon name="whatsapp-logo" size={18} />
         Agenda tu cita
@@ -82,6 +92,26 @@ import { nav, wa, bookingText } from '../data/site';
   };
 
   toggle?.addEventListener('click', () => setOpen(menu?.hidden ?? false));
+
+  // Cambio de tema claro / oscuro, recordado en este navegador.
+  const themeToggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  const syncThemeButton = () => {
+    const dark = document.documentElement.dataset.theme === 'dark';
+    themeToggle?.setAttribute('aria-pressed', String(dark));
+    themeToggle?.setAttribute('aria-label', dark ? 'Activar modo claro' : 'Activar modo oscuro');
+    themeColor?.setAttribute('content', dark ? '#1a1218' : '#fbf6f5');
+  };
+  syncThemeButton();
+  themeToggle?.addEventListener('click', () => {
+    const dark = document.documentElement.dataset.theme !== 'dark';
+    if (dark) document.documentElement.dataset.theme = 'dark';
+    else delete document.documentElement.dataset.theme;
+    try {
+      localStorage.setItem('lafiore-theme', dark ? 'dark' : 'light');
+    } catch {}
+    syncThemeButton();
+  });
   document.querySelectorAll('[data-menu-link]').forEach((link) => link.addEventListener('click', () => setOpen(false)));
 
   // Línea inferior del header cuando la página ya no está arriba del todo.

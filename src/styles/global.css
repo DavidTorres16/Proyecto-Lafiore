@@ -24,24 +24,25 @@
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1a1218;
-    --surface: #241a21;
-    --surface-strong: #2f232b;
-    --ink: #f5ecee;
-    --ink-soft: #cdbac3;
-    --accent: #d5a7b8;
-    --accent-ink: #1a1218;
-    --bloom: #9a6c77;
-    --line: #3a2c35;
-    --block: #241a21;
-    --block-ink: #f5ecee;
-    --block-soft: #cdbac3;
-    --block-accent: #d5a7b8;
-    color-scheme: dark;
-  }
+/* Modo claro por defecto; el botón del header activa el oscuro con data-theme. */
+:root[data-theme="dark"] {
+  --bg: #1a1218;
+  --surface: #241a21;
+  --surface-strong: #2f232b;
+  --ink: #f5ecee;
+  --ink-soft: #cdbac3;
+  --accent: #d5a7b8;
+  --accent-ink: #1a1218;
+  --bloom: #9a6c77;
+  --line: #3a2c35;
+  --block: #241a21;
+  --block-ink: #f5ecee;
+  --block-soft: #cdbac3;
+  --block-accent: #d5a7b8;
+  color-scheme: dark;
 }
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   --font-display: "Cormorant Garamond Variable", "Cormorant Garamond", Georgia, serif;
