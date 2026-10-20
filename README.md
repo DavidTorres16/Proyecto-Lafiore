@@ -35,3 +35,7 @@ Los botones abren WhatsApp con un mensaje prellenado según el tratamiento. Los 
 - El logo está vectorizado a partir de una captura (`src/assets/lafiore-mark.svg`). Hay que pedir el archivo original.
 - La página lleva `noindex`. Compartirla solo por enlace privado hasta que el cliente apruebe.
 - Falta confirmar la dirección, los horarios y el permiso para usar el testimonio y las fotos de personas.
+
+## Archivo de demo
+
+`demo/lafiore-propuesta.html` es la landing empaquetada en un solo archivo (estilos, fuentes e imágenes incluidos). Se abre directamente en el navegador, sin servidor ni conexión. Si cambias el sitio, hay que regenerarlo después de `npm run build`.
