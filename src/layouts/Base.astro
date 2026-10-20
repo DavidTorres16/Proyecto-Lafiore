@@ -29,8 +29,7 @@ const schema = {
     <meta name="description" content={description} />
     <!-- Demo privada de propuesta: no indexar hasta que el cliente apruebe. -->
     <meta name="robots" content="noindex, nofollow" />
-    <meta name="theme-color" content="#fbf6f5" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1a1218" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fbf6f5" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:title" content={title} />
@@ -38,7 +37,16 @@ const schema = {
     <meta property="og:image" content={asset('/img/perfil-cejas-remocion.webp')} />
     <link rel="icon" href={asset('/favicon.svg')} type="image/svg+xml" />
     <link rel="preload" as="image" href={asset('/img/perfil-cejas-remocion.webp')} fetchpriority="high" />
-    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script is:inline>
+      // Aplica el tema guardado antes de pintar, para que no parpadee.
+      document.documentElement.classList.add('js');
+      try {
+        if (localStorage.getItem('lafiore-theme') === 'dark') {
+          document.documentElement.dataset.theme = 'dark';
+          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#1a1218');
+        }
+      } catch {}
+    </script>
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
