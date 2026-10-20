@@ -1,0 +1,20 @@
+---
+// Iconos Phosphor (peso "light") incrustados en tiempo de build.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+interface Props {
+  name: string;
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 22, class: className = '' } = Astro.props;
+const file = join(process.cwd(), 'node_modules/@phosphor-icons/core/assets/light', `${name}-light.svg`);
+const svg = readFileSync(file, 'utf8').replace(
+  '<svg ',
+  `<svg width="${size}" height="${size}" aria-hidden="true" focusable="false" class="${className}" `,
+);
+---
+
+<Fragment set:html={svg} />

@@ -1,0 +1,26 @@
+---
+import Icon from './Icon.astro';
+import { wa, bookingText } from '../data/site';
+---
+
+<a
+  href={wa(bookingText)}
+  target="_blank"
+  rel="noopener"
+  aria-label="Escribir a Lafiore por WhatsApp"
+  data-fab
+  class="fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-30 grid size-14 translate-y-24 place-items-center rounded-full bg-accent text-accent-ink opacity-0 shadow-[0_14px_34px_-10px_color-mix(in_oklab,var(--accent)_75%,transparent)] transition-[transform,opacity] duration-500 ease-soft active:scale-95 data-[shown]:translate-y-0 data-[shown]:opacity-100 md:right-8 md:bottom-8"
+>
+  <Icon name="whatsapp-logo" size={28} />
+</a>
+
+<script>
+  // Aparece cuando el botón principal del hero deja de verse.
+  const fab = document.querySelector<HTMLElement>('[data-fab]');
+  const hero = document.getElementById('hero');
+  if (fab && hero) {
+    new IntersectionObserver(([entry]) => fab.toggleAttribute('data-shown', !entry.isIntersecting), {
+      rootMargin: '-40% 0px 0px 0px',
+    }).observe(hero);
+  }
+</script>

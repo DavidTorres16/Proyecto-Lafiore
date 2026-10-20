@@ -1,0 +1,94 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { nav, wa, bookingText } from '../data/site';
+---
+
+<header
+  id="top"
+  class="sticky top-0 z-40 border-b border-transparent bg-bg/80 backdrop-blur-md transition-colors duration-300 data-[scrolled]:border-line"
+>
+  <div class="mx-auto flex h-[68px] max-w-7xl items-center justify-between gap-6 px-4 md:px-8">
+    <a href="#top" class="w-[76px] md:w-[82px]" aria-label="Lafiore Medical Skin Center, inicio">
+      <Logo tagline={false} />
+    </a>
+
+    <nav aria-label="Principal" class="hidden lg:block">
+      <ul class="flex items-center gap-9 text-[15px] text-ink-soft">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} class="transition-colors hover:text-ink">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href={wa(bookingText)} target="_blank" rel="noopener" class="btn-primary hidden !px-5 !py-2.5 sm:inline-flex">
+        <Icon name="whatsapp-logo" size={18} />
+        Agenda tu cita
+      </a>
+      <button
+        type="button"
+        class="grid size-11 place-items-center rounded-full text-ink transition-colors hover:bg-surface lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Abrir menú"
+        data-menu-toggle
+      >
+        <span data-icon-open><Icon name="list" size={24} /></span>
+        <span data-icon-close hidden><Icon name="x" size={24} /></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="border-t border-line bg-bg lg:hidden" hidden>
+    <ul class="mx-auto flex max-w-7xl flex-col px-4 py-4 text-lg">
+      {
+        nav.map((item) => (
+          <li>
+            <a href={item.href} class="block py-3 text-ink" data-menu-link>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="pt-3">
+        <a href={wa(bookingText)} target="_blank" rel="noopener" class="btn-primary w-full">
+          <Icon name="whatsapp-logo" size={18} />
+          Agenda tu cita
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector('header');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.getElementById('mobile-menu');
+
+  const setOpen = (open: boolean) => {
+    if (!toggle || !menu) return;
+    menu.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    toggle.querySelector<HTMLElement>('[data-icon-open]')!.hidden = open;
+    toggle.querySelector<HTMLElement>('[data-icon-close]')!.hidden = !open;
+  };
+
+  toggle?.addEventListener('click', () => setOpen(menu?.hidden ?? false));
+  document.querySelectorAll('[data-menu-link]').forEach((link) => link.addEventListener('click', () => setOpen(false)));
+
+  // Línea inferior del header cuando la página ya no está arriba del todo.
+  const sentinel = document.getElementById('hero');
+  if (header && sentinel) {
+    new IntersectionObserver(([entry]) => header.toggleAttribute('data-scrolled', entry.intersectionRatio < 0.98), {
+      threshold: [0.98],
+    }).observe(sentinel);
+  }
+</script>

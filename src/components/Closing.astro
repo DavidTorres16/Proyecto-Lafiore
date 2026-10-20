@@ -1,0 +1,65 @@
+---
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+import { site, wa, bookingText, nav } from '../data/site';
+---
+
+<section aria-labelledby="closing-title" class="px-4 pb-6 md:px-8">
+  <div class="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-surface-strong px-6 py-16 md:px-16 md:py-24">
+    <div class="grid gap-10 lg:grid-cols-[1.6fr_1fr] lg:items-end">
+      <h2 id="closing-title" data-reveal class="font-display text-[44px] leading-[1.04] font-medium md:text-[60px]">
+        Tu próxima cita empieza con <em class="font-normal text-accent">un mensaje</em>
+      </h2>
+      <div data-reveal style="--i:1">
+        <p class="text-lg leading-relaxed text-ink-soft">
+          Escríbenos por WhatsApp y te ayudamos a elegir el tratamiento para tu piel.
+        </p>
+        <a href={wa(bookingText)} target="_blank" rel="noopener" class="btn-primary mt-7">
+          <Icon name="whatsapp-logo" size={20} />
+          Agenda tu cita
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="px-4 pt-14 pb-10 md:px-8">
+  <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.2fr_1fr_1fr]">
+    <div>
+      <div class="w-[150px] text-[16px]"><Logo /></div>
+      <p class="mt-5 max-w-xs text-[15px] leading-relaxed text-ink-soft">
+        Rejuvenecimiento facial, calidad de piel y recuperación post operatoria en {site.city}.
+      </p>
+    </div>
+
+    <nav aria-label="Secciones">
+      <ul class="grid gap-3 text-[15px] text-ink-soft">
+        {nav.map((item) => <li><a href={item.href} class="hover:text-ink">{item.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <ul class="grid content-start gap-3 text-[15px] text-ink-soft">
+      <li>
+        <a href={wa(bookingText)} target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-ink">
+          <Icon name="whatsapp-logo" size={20} />
+          {site.whatsappDisplay}
+        </a>
+      </li>
+      <li>
+        <a href={site.instagram} target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-ink">
+          <Icon name="instagram-logo" size={20} />
+          @lafioremedical
+        </a>
+      </li>
+      <li class="inline-flex items-center gap-2">
+        <Icon name="map-pin" size={20} />
+        {site.city}
+      </li>
+    </ul>
+  </div>
+
+  <p class="mx-auto mt-14 max-w-7xl border-t border-line pt-6 text-[13px] text-ink-soft">
+    Propuesta de sitio web elaborada para Lafiore Medical Skin Center. Imágenes y textos tomados de su perfil
+    público como referencia.
+  </p>
+</footer>

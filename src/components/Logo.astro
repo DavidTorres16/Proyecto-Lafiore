@@ -1,0 +1,22 @@
+---
+// Logo vectorizado desde el perfil de Instagram. Reemplazar por el archivo original del cliente.
+import mark from '../assets/lafiore-mark.svg?raw';
+
+interface Props {
+  class?: string;
+  tagline?: boolean;
+}
+
+const { class: className = '', tagline = true } = Astro.props;
+---
+
+<span class:list={['inline-flex flex-col items-center text-accent', className]}>
+  <span class="block w-full [&>svg]:h-auto [&>svg]:w-full" set:html={mark} />
+  {
+    tagline && (
+      <span class="mt-[0.35em] text-[0.5em] leading-none font-medium tracking-[0.32em] whitespace-nowrap uppercase">
+        Medical · Skin Center
+      </span>
+    )
+  }
+</span>

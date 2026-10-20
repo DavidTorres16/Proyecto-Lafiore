@@ -1,0 +1,56 @@
+---
+import Icon from './Icon.astro';
+import { postOpPillars, wa } from '../data/site';
+---
+
+<section id="post-operatorio" class="scroll-mt-20 bg-block text-block-ink">
+  <div class="mx-auto grid max-w-7xl gap-14 px-4 py-20 md:grid-cols-[0.9fr_1.1fr] md:gap-16 md:px-8 md:py-28">
+    <div class="md:sticky md:top-28 md:self-start">
+      <h2 data-reveal class="font-display text-4xl leading-[1.08] font-medium text-balance md:text-[56px]">
+        Tu recuperación también es <em class="font-normal text-block-accent">parte del resultado</em>
+      </h2>
+      <p data-reveal style="--i:1" class="mt-6 max-w-[46ch] text-lg leading-relaxed text-block-soft">
+        Después de una cirugía facial o corporal, el cuidado de los días siguientes define cómo te sientes y cómo
+        se ve tu piel.
+      </p>
+      <a
+        data-reveal
+        style="--i:2"
+        href={wa('Hola Lafiore, quiero información sobre la recuperación post operatoria.')}
+        target="_blank"
+        rel="noopener"
+        class="btn mt-9 bg-block-accent text-block hover:-translate-y-px"
+      >
+        Consultar mi caso
+        <Icon name="arrow-up-right" size={18} />
+      </a>
+    </div>
+
+    <div class="grid gap-5">
+      <figure data-reveal class="overflow-hidden rounded-3xl">
+        <img
+          src="/img/presoterapia.webp"
+          alt="Esteticista de Lafiore preparando una sesión de presoterapia en cabina"
+          width="680"
+          height="700"
+          loading="lazy"
+          data-drift
+          class="aspect-[16/10] w-full object-cover"
+        />
+      </figure>
+      <ul class="grid gap-x-8 gap-y-9 pt-6 sm:grid-cols-2">
+        {
+          postOpPillars.map((pillar, i) => (
+            <li data-reveal style={`--i:${i}`} class:list={[i === 2 && 'sm:col-span-2 sm:max-w-md']}>
+              <span class="text-block-accent">
+                <Icon name={pillar.icon} size={28} />
+              </span>
+              <h3 class="mt-4 font-display text-2xl font-medium">{pillar.title}</h3>
+              <p class="mt-2 text-[15px] leading-relaxed text-block-soft">{pillar.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

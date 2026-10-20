@@ -1,0 +1,89 @@
+---
+import Icon from './Icon.astro';
+import { treatmentLines, wa } from '../data/site';
+
+const [rostro, cuerpo, postOp, mujer] = treatmentLines;
+const ask = (title: string) => wa(`Hola Lafiore, quiero información sobre los tratamientos de ${title.toLowerCase()}.`);
+---
+
+<section id="tratamientos" class="scroll-mt-20 py-20 md:py-28">
+  <div class="mx-auto max-w-7xl px-4 md:px-8">
+    <h2 data-reveal class="max-w-2xl font-display text-4xl leading-[1.08] font-medium text-balance md:text-[56px]">
+      Cuatro líneas de cuidado, <em class="font-normal text-accent">un mismo criterio médico</em>
+    </h2>
+
+    <div class="mt-12 grid gap-4 md:mt-16 md:grid-cols-6 md:gap-5">
+      <!-- Piel y rostro: celda principal con foto -->
+      <article
+        data-reveal
+        class="group relative isolate flex min-h-[600px] flex-col justify-end overflow-hidden rounded-3xl bg-block p-7 text-block-ink md:col-span-4 md:row-span-2 md:min-h-[620px] md:p-10"
+      >
+        <img
+          src={rostro.image!.src}
+          alt={rostro.image!.alt}
+          width="670"
+          height="914"
+          loading="lazy"
+          class="absolute inset-0 -z-10 size-full object-cover object-top transition-transform duration-[1.2s] ease-soft group-hover:scale-[1.03]"
+        />
+        <div aria-hidden="true" class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b1b27]/95 via-[#2b1b27]/70 to-[#2b1b27]/10 md:via-[#2b1b27]/45 md:to-transparent"></div>
+        <h3 class="font-display text-4xl font-medium md:text-5xl">{rostro.title}</h3>
+        <p class="mt-3 max-w-md text-[17px] leading-relaxed text-block-ink/85">{rostro.summary}</p>
+        <ul class="mt-6 flex max-w-xl flex-wrap gap-2">
+          {rostro.items.map((item) => <li class="rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-sm backdrop-blur-sm">{item}</li>)}
+        </ul>
+        <a href={ask(rostro.title)} target="_blank" rel="noopener" class="mt-7 inline-flex w-fit items-center gap-2 text-[15px] font-medium underline-offset-4 hover:underline">
+          Consultar
+          <Icon name="arrow-up-right" size={18} />
+        </a>
+      </article>
+
+      <!-- Cuerpo: foto vertical -->
+      <article
+        data-reveal
+        style="--i:1"
+        class="group relative isolate flex min-h-[380px] flex-col justify-end overflow-hidden rounded-3xl bg-block p-7 text-block-ink md:col-span-2 md:row-span-2"
+      >
+        <img
+          src={cuerpo.image!.src}
+          alt={cuerpo.image!.alt}
+          width="660"
+          height="900"
+          loading="lazy"
+          class="absolute inset-0 -z-10 size-full object-cover transition-transform duration-[1.2s] ease-soft group-hover:scale-[1.03]"
+        />
+        <div aria-hidden="true" class="absolute inset-0 -z-10 bg-gradient-to-t from-[#2b1b27]/90 via-[#2b1b27]/40 to-transparent"></div>
+        <h3 class="font-display text-3xl font-medium">{cuerpo.title}</h3>
+        <p class="mt-2 text-[15px] leading-relaxed text-block-ink/85">{cuerpo.summary}</p>
+        <p class="mt-4 text-sm text-block-ink/75">{cuerpo.items.join(', ')}</p>
+        <a href={ask(cuerpo.title)} target="_blank" rel="noopener" class="mt-5 inline-flex w-fit items-center gap-2 text-[15px] font-medium underline-offset-4 hover:underline">
+          Consultar
+          <Icon name="arrow-up-right" size={18} />
+        </a>
+      </article>
+
+      <!-- Post operatorio y Mujer: celdas de color -->
+      <article data-reveal style="--i:2" class="flex flex-col rounded-3xl bg-surface-strong p-7 md:col-span-3 md:row-start-3">
+        <span class="text-accent"><Icon name={postOp.icon} size={30} /></span>
+        <h3 class="mt-5 font-display text-3xl font-medium">{postOp.title}</h3>
+        <p class="mt-2 max-w-sm text-[15px] leading-relaxed text-ink-soft">{postOp.summary}</p>
+        <p class="mt-4 text-sm text-ink-soft">{postOp.items.join(', ')}</p>
+        <a href="#post-operatorio" class="mt-6 inline-flex w-fit items-center gap-2 text-[15px] font-medium text-accent underline-offset-4 hover:underline">
+          Cómo te acompañamos
+          <Icon name="arrow-right" size={18} />
+        </a>
+      </article>
+
+      <article data-reveal style="--i:3" class="flex flex-col rounded-3xl border border-line bg-bg p-7 md:col-span-3 md:row-start-3">
+        <span class="text-accent"><Icon name={mujer.icon} size={30} /></span>
+        <h3 class="mt-5 font-display text-3xl font-medium">{mujer.title}</h3>
+        <p class="mt-2 max-w-sm text-[15px] leading-relaxed text-ink-soft">{mujer.summary}</p>
+        <p class="mt-4 text-sm text-ink-soft">{mujer.items.join(', ')}</p>
+        <a href={ask(mujer.title)} target="_blank" rel="noopener" class="mt-6 inline-flex w-fit items-center gap-2 text-[15px] font-medium text-accent underline-offset-4 hover:underline">
+          Consultar
+          <Icon name="arrow-up-right" size={18} />
+        </a>
+      </article>
+    </div>
+  </div>
+</section>

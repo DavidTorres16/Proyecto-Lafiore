@@ -1,0 +1,129 @@
+@import "tailwindcss";
+@import "@fontsource-variable/cormorant-garamond/wght.css";
+@import "@fontsource-variable/cormorant-garamond/wght-italic.css";
+@import "@fontsource-variable/geist";
+
+/*
+  Tokens de marca muestreados del Instagram de Lafiore (ver docs/01-analisis-marca-lafiore.md).
+  Regla de forma: botones en píldora, contenedores 24px, retratos con arco superior.
+*/
+:root {
+  --bg: #fbf6f5;
+  --surface: #f3e8e7;
+  --surface-strong: #eadcd9;
+  --ink: #2b1b27;
+  --ink-soft: #5e4a56;
+  --accent: #8c5a6a;
+  --accent-ink: #fbf6f5;
+  --bloom: #b7889b;
+  --line: #e4d3d3;
+  --block: #2b1b27;
+  --block-ink: #f5ecee;
+  --block-soft: #cdbac3;
+  --block-accent: #d5a7b8;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1218;
+    --surface: #241a21;
+    --surface-strong: #2f232b;
+    --ink: #f5ecee;
+    --ink-soft: #cdbac3;
+    --accent: #d5a7b8;
+    --accent-ink: #1a1218;
+    --bloom: #9a6c77;
+    --line: #3a2c35;
+    --block: #241a21;
+    --block-ink: #f5ecee;
+    --block-soft: #cdbac3;
+    --block-accent: #d5a7b8;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --font-display: "Cormorant Garamond Variable", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Geist Variable", "Geist", ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-bloom: var(--bloom);
+  --color-line: var(--line);
+  --color-block: var(--block);
+  --color-block-ink: var(--block-ink);
+  --color-block-soft: var(--block-soft);
+  --color-block-accent: var(--block-accent);
+
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--bloom);
+    color: var(--bg);
+  }
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-medium whitespace-nowrap transition-[transform,background-color,color,box-shadow] duration-300 ease-soft active:scale-[0.98];
+}
+
+@utility btn-primary {
+  @apply btn bg-accent text-accent-ink shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--accent)_70%,transparent)] hover:-translate-y-px;
+}
+
+@utility btn-ghost {
+  @apply btn border border-line text-ink hover:bg-surface;
+}
+
+@utility arch {
+  border-radius: 999px 999px 24px 24px;
+}
+
+/* Revelado al entrar en pantalla. Solo se activa con JS y sin "reducir movimiento". */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.9s var(--ease-soft),
+      transform 0.9s var(--ease-soft);
+    transition-delay: calc(var(--i, 0) * 90ms);
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Parallax sutil en fotos, con animaciones ligadas al scroll nativas del navegador. */
+  @supports (animation-timeline: view()) {
+    [data-drift] {
+      animation: drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+    @keyframes drift {
+      from { transform: translateY(-4%) scale(1.08); }
+      to { transform: translateY(4%) scale(1.08); }
+    }
+  }
+}
